@@ -36,6 +36,15 @@
   # Control media players using controls on bluttooth headsets
   services.mpris-proxy.enable = true;
 
+  # GTK
+  gtk.enable            = true;
+  gtk.iconTheme.package = pkgs.papirus-icon-theme;
+  gtk.iconTheme.name    = "Papirus-Dark";
+  gtk.theme.package     = pkgs.orchis-theme;
+  gtk.theme.name        = "Orchis-Teal-Dark-Compact";
+  gtk.cursorTheme.name  = "BreezeX-Dark";
+  gtk.cursorTheme.size  = 28;
+
   home.sessionVariables = {
     EDITOR = "nvim";
 

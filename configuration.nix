@@ -108,7 +108,6 @@
     libsForQt5.qtstyleplugin-kvantum
     libsForQt5.polkit-kde-agent
     rofi-wayland
-    papirus-icon-theme
     mlocate
     hyprpaper
     gcc
@@ -116,7 +115,6 @@
     tree-sitter
     gnumake
     toybox
-    orchis-theme
   ];
 
   # Fonts
