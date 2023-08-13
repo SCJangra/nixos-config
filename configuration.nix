@@ -77,7 +77,7 @@
     isNormalUser = true;
     description = "Sachin Charakhwal";
     extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [];
+    packages = [];
   };
   home-manager.users.scj = import ./home-manager.nix;
   home-manager.useUserPackages = true;
@@ -115,6 +115,10 @@
     tree-sitter
     gnumake
     toybox
+    signal-desktop
+    vlc
+    qbittorrent
+    swww
   ];
 
   # Fonts
