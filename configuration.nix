@@ -8,8 +8,10 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      <home-manager/nixos>
     ];
+
+  # Enable flakes
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
@@ -79,9 +81,6 @@
     extraGroups = [ "networkmanager" "wheel" ];
     packages = [];
   };
-  home-manager.users.scj = import ./home-manager.nix;
-  home-manager.useUserPackages = true;
-  home-manager.useGlobalPkgs = true;
 
   # Enable automatic login for the user.
   services.getty.autologinUser = "scj";
