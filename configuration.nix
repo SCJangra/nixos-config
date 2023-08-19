@@ -107,6 +107,7 @@
     libsForQt5.qt5ct
     libsForQt5.qtstyleplugin-kvantum
     libsForQt5.polkit-kde-agent
+    libsForQt5.okular
     rofi-wayland
     mlocate
     hyprpaper
@@ -119,6 +120,7 @@
     vlc
     qbittorrent
     swww
+    protonvpn-cli
   ];
 
   # Fonts
