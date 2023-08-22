@@ -132,6 +132,10 @@
   # Hyprland
   programs.hyprland.enable = true;
 
+  # fstab
+  fileSystems."/run/media/scj/Storage".device = "/dev/disk/by-label/Storage";
+  fileSystems."/run/media/scj/Storage".fsType = "ntfs";
+
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
   # programs.mtr.enable = true;
