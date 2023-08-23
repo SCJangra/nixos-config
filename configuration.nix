@@ -97,7 +97,6 @@
     curl
     ripgrep
     fd
-    neovim
     brave
     dunst
     slurp
@@ -120,6 +119,15 @@
     qbittorrent
     swww
     protonvpn-cli
+
+    # Dev environment
+    neovim
+    lua-language-server
+    stylua
+    vscode-langservers-extracted
+    nil
+    rust-analyzer
+    rustup
   ];
 
   # Fonts
@@ -133,8 +141,9 @@
   programs.hyprland.enable = true;
 
   # fstab
-  fileSystems."/run/media/scj/Storage".device = "/dev/disk/by-label/Storage";
-  fileSystems."/run/media/scj/Storage".fsType = "ntfs";
+  fileSystems."/run/media/scj/Storage".device  = "/dev/disk/by-label/Storage";
+  fileSystems."/run/media/scj/Storage".fsType  = "ntfs";
+  fileSystems."/run/media/scj/Storage".options = [ "uid=1000" "gid=100" ];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
