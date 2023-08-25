@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, ... }:
+{ config, pkgs, neovim-nightly-overlay, ... }:
 
 {
   imports =
@@ -87,6 +87,7 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
+  nixpkgs.overlays = [ neovim-nightly-overlay.overlay ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
