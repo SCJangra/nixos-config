@@ -122,6 +122,7 @@
     protonvpn-cli
 
     # Dev environment
+    neovide
     neovim
     lua-language-server
     stylua
