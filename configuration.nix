@@ -2,13 +2,18 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, neovim-nightly-overlay, ... }:
+{ config, pkgs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
+      <home-manager/nixos>
     ];
+
+  home-manager.users.scj       = import ./home-manager.nix;
+  home-manager.useUserPackages = true;
+  home-manager.useGlobalPkgs   = true;
 
   # Enable flakes
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
@@ -87,7 +92,6 @@
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
-  nixpkgs.overlays = [ neovim-nightly-overlay.overlay ];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
