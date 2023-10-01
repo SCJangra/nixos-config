@@ -96,6 +96,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.shells = with pkgs; [ fish ];
+  environment.variables.LIBCLANG_PATH = "${pkgs.libclang.lib}/lib";
   environment.systemPackages = with pkgs; [
   # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     wget
@@ -126,14 +127,14 @@
     protonvpn-cli
 
     # Dev environment
-    neovide
-    neovim
     lua-language-server
     stylua
-    vscode-langservers-extracted
+    nodePackages.vscode-langservers-extracted
     nil
-    rust-analyzer
     rustup
+    protobuf
+    clang
+    glibc_multi
   ];
 
   # Fonts
@@ -145,6 +146,10 @@
 
   # Hyprland
   programs.hyprland.enable = true;
+
+  # Neovim
+  programs.neovim.enable = true;
+  programs.neovim.defaultEditor = true;
 
   # fstab
   fileSystems."/run/media/scj/Storage".device  = "/dev/disk/by-label/Storage";
