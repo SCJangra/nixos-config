@@ -99,42 +99,36 @@
   environment.variables.LIBCLANG_PATH = "${pkgs.libclang.lib}/lib";
   environment.systemPackages = with pkgs; [
   # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-    wget
-    curl
-    ripgrep
-    fd
     brave
+    curl
     dunst
-    slurp
-    lxqt.pcmanfm-qt
-    lxqt.pavucontrol-qt
+    fd
+    gcc
+    gnumake
+    libsForQt5.okular
+    libsForQt5.polkit-kde-agent
     libsForQt5.qt5ct
     libsForQt5.qtstyleplugin-kvantum
-    libsForQt5.polkit-kde-agent
-    libsForQt5.okular
-    rofi-wayland
-    mlocate
-    hyprpaper
-    gcc
-    nodejs
-    tree-sitter
-    gnumake
-    toybox
-    signal-desktop
-    vlc
-    qbittorrent
-    swww
-    protonvpn-cli
-
-    # Dev environment
     lua-language-server
-    stylua
-    nodePackages.vscode-langservers-extracted
+    lxqt.pavucontrol-qt
+    lxqt.pcmanfm-qt
+    mlocate
     nil
+    nodePackages.vscode-langservers-extracted
+    nodejs
+    protonvpn-cli
+    qbittorrent
+    ripgrep
+    rofi-wayland
     rustup
-    protobuf
-    clang
-    glibc_multi
+    signal-desktop
+    slurp
+    stylua
+    swww
+    toybox
+    tree-sitter
+    vlc
+    wget
   ];
 
   # Fonts
