@@ -22,14 +22,8 @@
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.hostName = "nixos"; # Define your hostname.
-  # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
-
-  # Configure network proxy if necessary
-  # networking.proxy.default = "http://user:password@proxy:port/";
-  # networking.proxy.noProxy = "127.0.0.1,localhost,internal.domain";
-
   # Enable networking
+  networking.hostName              = "nixos"; # Define your hostname.
   networking.networkmanager.enable = true;
 
   # Enable bluetooth
@@ -60,25 +54,19 @@
   time.timeZone = "Asia/Kolkata";
 
   # Select internationalisation properties.
-  i18n.defaultLocale = "en_IN";
+  i18n.defaultLocale = "en_US.UTF-8";
 
-  i18n.extraLocaleSettings = {
-    LC_ADDRESS = "en_IN";
-    LC_IDENTIFICATION = "en_IN";
-    LC_MEASUREMENT = "en_IN";
-    LC_MONETARY = "en_IN";
-    LC_NAME = "en_IN";
-    LC_NUMERIC = "en_IN";
-    LC_PAPER = "en_IN";
-    LC_TELEPHONE = "en_IN";
-    LC_TIME = "en_IN";
+  programs = {
+    fish     = { enable = true; };
+    hyprland = { enable = true; };
+    neovim   = {
+      enable        = true;
+      defaultEditor = true;
+      withNodeJs    = true;
+    };
   };
 
-  # Fish
-  programs.fish.enable               = true;
-
   # Define a user account. Don't forget to set a password with ‘passwd’.
-
   users.defaultUserShell = pkgs.fish;
   users.users.scj = {
     isNormalUser = true;
@@ -96,34 +84,23 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.shells = with pkgs; [ fish ];
-  environment.variables.LIBCLANG_PATH = "${pkgs.libclang.lib}/lib";
   environment.systemPackages = with pkgs; [
-  # vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
     brave
     curl
     dunst
     fd
-    gcc
-    gnumake
     libsForQt5.okular
     libsForQt5.polkit-kde-agent
     libsForQt5.qt5ct
     libsForQt5.qtstyleplugin-kvantum
-    lua-language-server
     lxqt.pavucontrol-qt
     lxqt.pcmanfm-qt
-    mlocate
-    nil
-    nodePackages.vscode-langservers-extracted
-    nodejs
     protonvpn-cli
     qbittorrent
     ripgrep
     rofi-wayland
-    rustup
     signal-desktop
     slurp
-    stylua
     swww
     toybox
     tree-sitter
@@ -138,36 +115,10 @@
     noto-fonts-emoji
   ];
 
-  # Hyprland
-  programs.hyprland.enable = true;
-
-  # Neovim
-  programs.neovim.enable = true;
-  programs.neovim.defaultEditor = true;
-
   # fstab
   fileSystems."/run/media/scj/Storage".device  = "/dev/disk/by-label/Storage";
   fileSystems."/run/media/scj/Storage".fsType  = "ntfs";
   fileSystems."/run/media/scj/Storage".options = [ "uid=1000" "gid=100" ];
-
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
