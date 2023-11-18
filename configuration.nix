@@ -106,6 +106,7 @@
     tree-sitter
     vlc
     wget
+    wl-clipboard
   ];
 
   # Fonts
@@ -117,8 +118,8 @@
 
   # fstab
   fileSystems."/run/media/scj/Storage".device  = "/dev/disk/by-label/Storage";
-  fileSystems."/run/media/scj/Storage".fsType  = "ntfs";
-  fileSystems."/run/media/scj/Storage".options = [ "uid=1000" "gid=100" ];
+  fileSystems."/run/media/scj/Storage".fsType  = "ntfs-3g";
+  fileSystems."/run/media/scj/Storage".options = [ "rw" "uid=1000" ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
