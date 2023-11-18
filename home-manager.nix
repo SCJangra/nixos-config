@@ -23,6 +23,10 @@
   programs.starship.settings.git_status.ahead    = "";
   programs.starship.settings.git_status.behind   = "";
 
+  # Direnv
+  programs.direnv.enable            = true;
+  programs.direnv.nix-direnv.enable = true;
+
   # Exa
   programs.exa.enable        = true;
   programs.exa.enableAliases = true;
