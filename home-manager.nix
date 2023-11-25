@@ -41,6 +41,12 @@
   programs.eww.enable    = true;
   programs.eww.configDir = ./config/eww;
 
+  # Notifications
+  services.dunst.enable            = true;
+  services.dunst.configFile        = ./config/dunst/dunstrc;
+  services.dunst.iconTheme.name    = "Papirus-Dark";
+  services.dunst.iconTheme.package = pkgs.papirus-icon-theme;
+
   # Control media players using controls on bluttooth headsets
   services.mpris-proxy.enable = true;
 

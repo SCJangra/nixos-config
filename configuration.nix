@@ -84,7 +84,6 @@
   environment.systemPackages = with pkgs; [
     brave
     curl
-    dunst
     fd
     libsForQt5.okular
     libsForQt5.polkit-kde-agent
