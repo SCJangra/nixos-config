@@ -37,6 +37,10 @@
   programs.kitty.enable      = true;
   programs.kitty.extraConfig = builtins.readFile ./config/kitty/kitty.conf;
 
+  # Elkowars Wacky Widgets
+  programs.eww.enable    = true;
+  programs.eww.configDir = ./config/eww;
+
   # Control media players using controls on bluttooth headsets
   services.mpris-proxy.enable = true;
 
