@@ -24,12 +24,6 @@
         inherit system;
         config.allowUnfree = true;
       };
-      parinfer-rust = pkgs.rustPlatform.buildRustPackage {
-        pname = "parinfer-rust";
-        src = parinfer-rust-src;
-        version = "1.0.0";
-        cargoLock.lockFile = "${parinfer-rust-src}/Cargo.lock";
-      };
     in
     {
       devShells.${system}.default = pkgs.mkShell {
@@ -38,7 +32,7 @@
 
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs system parinfer-rust; };
+          specialArgs = { inherit inputs system; };
           modules = [ ./configuration.nix ];
         };
       };
