@@ -15,9 +15,14 @@
       repo = "parinfer-rust";
       flake = false;
     };
+
+    nix-index-database = {
+      url = "github:nix-community/nix-index-database";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, parinfer-rust-src }@inputs:
+  outputs = { self, nixpkgs, home-manager, parinfer-rust-src, nix-index-database }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {

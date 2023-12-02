@@ -11,7 +11,9 @@
       inputs.home-manager.nixosModules.home-manager
     ];
 
-  home-manager.users.scj       = import ./home-manager.nix;
+  nix.channel.enable = false;
+
+  home-manager.users.scj       = import ./home-manager.nix { pkgs = pkgs; inputs = inputs; };
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs   = true;
 
@@ -64,6 +66,7 @@
       defaultEditor = true;
       withNodeJs    = true;
     };
+    command-not-found = { enable = false; };
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.

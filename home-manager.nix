@@ -1,7 +1,9 @@
-{ pkgs, ... }: {
+{ pkgs, inputs, ... }: {
   home.username      = "scj";
   home.homeDirectory = "/home/scj";
   home.stateVersion  = "23.05";
+
+  home.file.".cache/nix-index/files".source = inputs.nix-index-database.legacyPackages.${pkgs.system}.database;
 
   programs.home-manager.enable = true;
 
@@ -36,6 +38,10 @@
   # Kitty
   programs.kitty.enable      = true;
   programs.kitty.extraConfig = builtins.readFile ./config/kitty/kitty.conf;
+
+  # Nix Index
+  programs.nix-index.enable                = true;
+  programs.nix-index.enableFishIntegration = true;
 
   # Notifications
   services.dunst.enable            = true;
