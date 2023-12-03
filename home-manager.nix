@@ -30,10 +30,10 @@
   programs.direnv.nix-direnv.enable = true;
 
   # Exa
-  programs.exa.enable        = true;
-  programs.exa.enableAliases = true;
-  programs.exa.git           = true;
-  programs.exa.icons         = true;
+  programs.eza.enable        = true;
+  programs.eza.enableAliases = true;
+  programs.eza.git           = true;
+  programs.eza.icons         = true;
 
   # Kitty
   programs.kitty.enable      = true;
