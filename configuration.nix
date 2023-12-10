@@ -106,6 +106,7 @@
     vlc
     wget
     wl-clipboard
+    google-chrome
   ];
 
   # Fonts
