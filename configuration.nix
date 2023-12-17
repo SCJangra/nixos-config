@@ -89,9 +89,6 @@
     curl
     fd
     libsForQt5.okular
-    libsForQt5.polkit-kde-agent
-    libsForQt5.qt5ct
-    libsForQt5.qtstyleplugin-kvantum
     lxqt.pavucontrol-qt
     lxqt.pcmanfm-qt
     protonvpn-cli

@@ -61,6 +61,11 @@
   gtk.cursorTheme.name  = "BreezeX-Dark";
   gtk.cursorTheme.size  = 28;
 
+  # QT
+  qt.enable        = true;
+  qt.style.name    = "kvantum";
+  qt.platformTheme = "kde";
+
   home.sessionVariables = {
     EDITOR = "nvim";
 
@@ -73,8 +78,5 @@
     XMODIFIERS     = "@im=fcitx";
     SDL_IM_MODULE  = "fcitx";
     GLFW_IM_MODULE = "ibus";
-
-    # QT
-    QT_QPA_PLATFORMTHEME = "qt5ct";
   };
 }
