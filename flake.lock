@@ -57,28 +57,11 @@
         "type": "github"
       }
     },
-    "parinfer-rust-src": {
-      "flake": false,
-      "locked": {
-        "lastModified": 1692972369,
-        "narHash": "sha256-xYdSOQMqeIaN5ADiwg5DkjyworcT6FWGJvJUV1NOb+0=",
-        "owner": "eraserhd",
-        "repo": "parinfer-rust",
-        "rev": "0e4d52e712641ad351a1bfe6cee3d34d63ed087b",
-        "type": "github"
-      },
-      "original": {
-        "owner": "eraserhd",
-        "repo": "parinfer-rust",
-        "type": "github"
-      }
-    },
     "root": {
       "inputs": {
         "home-manager": "home-manager",
         "nix-index-database": "nix-index-database",
-        "nixpkgs": "nixpkgs",
-        "parinfer-rust-src": "parinfer-rust-src"
+        "nixpkgs": "nixpkgs"
       }
     }
   },
