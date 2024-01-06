@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ config, pkgs, inputs, system, ... }:
 
 {
   imports =
@@ -11,7 +11,8 @@
       inputs.home-manager.nixosModules.home-manager
     ];
 
-  nix.channel.enable = false;
+  nix.channel.enable = true;
+  nix.nixPath = [ "nixpkgs=${inputs.nixpkgs.outPath}" ];
 
   home-manager.users.scj       = import ./home-manager.nix { pkgs = pkgs; inputs = inputs; };
   home-manager.useUserPackages = true;
@@ -104,6 +105,7 @@
     wget
     wl-clipboard
     google-chrome
+    inputs.firefox-nightly.packages.${system}.firefox-nightly-bin
   ];
 
   # Fonts
