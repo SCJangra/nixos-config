@@ -13,14 +13,9 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    firefox-nightly = {
-      url = "github:nix-community/flake-firefox-nightly";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-index-database, firefox-nightly }@inputs:
+  outputs = { self, nixpkgs, home-manager, nix-index-database }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
@@ -35,7 +30,7 @@
 
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs system pkgs; };
+          specialArgs = { inherit inputs pkgs; };
           modules = [ ./configuration.nix ];
         };
       };

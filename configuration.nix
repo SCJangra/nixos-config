@@ -2,7 +2,7 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, system, ... }:
+{ config, pkgs, inputs, ... }:
 
 {
   imports =
@@ -104,8 +104,6 @@
     vlc
     wget
     wl-clipboard
-    google-chrome
-    inputs.firefox-nightly.packages.${system}.firefox-nightly-bin
   ];
 
   # Fonts
