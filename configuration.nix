@@ -104,6 +104,7 @@
     vlc
     wget
     wl-clipboard
+    unrar
   ];
 
   # Fonts
