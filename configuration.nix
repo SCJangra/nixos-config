@@ -89,9 +89,12 @@
     brave
     curl
     fd
-    libsForQt5.okular
+    kdePackages.okular
+    kdePackages.qtstyleplugin-kvantum
     lxqt.pavucontrol-qt
     lxqt.pcmanfm-qt
+    lxqt.lxqt-qtplugin
+    lxqt.lxqt-config
     protonvpn-cli
     qbittorrent
     ripgrep
@@ -105,6 +108,10 @@
     wget
     wl-clipboard
     unrar
+    socat
+    jq
+    pgadmin4-desktopmode
+    eww
   ];
 
   # Fonts

@@ -30,10 +30,10 @@
   programs.direnv.nix-direnv.enable = true;
 
   # Exa
-  programs.eza.enable        = true;
-  programs.eza.enableAliases = true;
-  programs.eza.git           = true;
-  programs.eza.icons         = true;
+  programs.eza.enable                = true;
+  programs.eza.enableFishIntegration = true;
+  programs.eza.git                   = true;
+  programs.eza.icons                 = true;
 
   # Kitty
   programs.kitty.enable      = true;
@@ -62,12 +62,14 @@
   gtk.cursorTheme.size  = 28;
 
   # QT
-  qt.enable        = true;
-  qt.style.name    = "kvantum";
-  qt.platformTheme = "kde";
+  # qt.enable             = true;
+  # qt.style.name         = "kvantum";
+  # qt.platformTheme.name = "qtct";
 
   home.sessionVariables = {
     EDITOR = "nvim";
+
+    QT_QPA_PLATFORMTHEME = "lxqt";
 
     # Log WLR errors and logs to the hyprland log. Recommended
     HYPRLAND_LOG_WLR = 1;
