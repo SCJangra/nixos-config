@@ -93,8 +93,7 @@
     kdePackages.qtstyleplugin-kvantum
     lxqt.pavucontrol-qt
     lxqt.pcmanfm-qt
-    lxqt.lxqt-qtplugin
-    lxqt.lxqt-config
+    libsForQt5.qtstyleplugin-kvantum
     protonvpn-cli
     qbittorrent
     ripgrep

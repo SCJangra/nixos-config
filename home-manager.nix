@@ -3,7 +3,7 @@
   home.homeDirectory = "/home/scj";
   home.stateVersion  = "23.05";
 
-  home.file.".cache/nix-index/files".source = inputs.nix-index-database.legacyPackages.${pkgs.system}.database;
+  # home.file.".cache/nix-index/files".source = inputs.nix-index-database.legacyPackages.${pkgs.system}.database;
 
   programs.home-manager.enable = true;
 
@@ -62,14 +62,11 @@
   gtk.cursorTheme.size  = 28;
 
   # QT
-  # qt.enable             = true;
-  # qt.style.name         = "kvantum";
-  # qt.platformTheme.name = "qtct";
+  qt.enable             = true;
+  qt.platformTheme.name = "qtct";
 
   home.sessionVariables = {
     EDITOR = "nvim";
-
-    QT_QPA_PLATFORMTHEME = "lxqt";
 
     # Log WLR errors and logs to the hyprland log. Recommended
     HYPRLAND_LOG_WLR = 1;
