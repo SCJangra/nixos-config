@@ -7,9 +7,15 @@
 
   programs.home-manager.enable = true;
 
+  # Neovim
+  programs.neovim.enable           = true;
+  programs.neovim.defaultEditor    = true;
+  programs.neovim.withNodeJs       = true;
+  programs.neovim.extraPackages    = with pkgs; [ gcc lua-language-server cargo rustc cmake ];
   # Fish
   programs.fish.enable               = true;
   programs.fish.interactiveShellInit = builtins.readFile ./config/fish/config.fish;
+  programs.fish.functions.nv         = "set -x NVIM_APPNAME nv; nvim $argv";
 
   # Git
   programs.git.enable    = true;

@@ -62,11 +62,6 @@
   programs = {
     fish     = { enable = true; };
     hyprland = { enable = true; };
-    neovim   = {
-      enable        = true;
-      defaultEditor = true;
-      withNodeJs    = true;
-    };
     command-not-found = { enable = false; };
   };
 
