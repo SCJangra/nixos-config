@@ -33,7 +33,7 @@
   programs.eza.enable                = true;
   programs.eza.enableFishIntegration = true;
   programs.eza.git                   = true;
-  programs.eza.icons                 = true;
+  programs.eza.icons                 = "always";
 
   # Kitty
   programs.kitty.enable      = true;
