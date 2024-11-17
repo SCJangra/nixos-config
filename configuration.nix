@@ -113,6 +113,17 @@
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
+    (nerdfonts.override { fonts = ["NerdFontsSymbolsOnly"]; })
+    (pkgs.stdenv.mkDerivation {
+      name = "iosevka";
+      src = inputs.iosevka;
+      installPhase = ''
+        runHook preInstall
+        mkdir -p $out/share/fonts
+        cp ./*.ttf $out/share/fonts/
+        runHook postInstall
+      '';
+    })
   ];
 
   # fstab

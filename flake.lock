@@ -20,6 +20,19 @@
         "type": "github"
       }
     },
+    "iosevka": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1731768992,
+        "narHash": "sha256-xK0qnwZX5ebT1i7s8mBZiRV6psWWLkPMyMJLcjb0cOs=",
+        "type": "tarball",
+        "url": "https://github.com/SCJangra/Iosevka/releases/download/stable/iosevka.zip"
+      },
+      "original": {
+        "type": "tarball",
+        "url": "https://github.com/SCJangra/Iosevka/releases/download/stable/iosevka.zip"
+      }
+    },
     "nix-index-database": {
       "inputs": {
         "nixpkgs": [
@@ -59,6 +72,7 @@
     "root": {
       "inputs": {
         "home-manager": "home-manager",
+        "iosevka": "iosevka",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs"
       }

@@ -13,9 +13,14 @@
       url = "github:nix-community/nix-index-database";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    iosevka = {
+      url = "https://github.com/SCJangra/Iosevka/releases/download/stable/iosevka.zip";
+      flake = false;
+    };
   };
 
-  outputs = { self, nixpkgs, home-manager, nix-index-database }@inputs:
+  outputs = { self, nixpkgs, iosevka, home-manager, nix-index-database }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs {
