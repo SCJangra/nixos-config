@@ -5,6 +5,8 @@
 
   # home.file.".cache/nix-index/files".source = inputs.nix-index-database.legacyPackages.${pkgs.system}.database;
 
+  home.file.".sf2" = { source = ./soundfonts; recursive = true; };
+
   programs.home-manager.enable = true;
 
   # Neovim
@@ -76,7 +78,7 @@
     name = "Brave Web Browser";
     genericName = "Web Browser";
     comment = "Access the internet";
-    exec = "${brave} --ozone-platform-hint=auto --ozone-platform=wayland %U";
+    exec = "${brave} --ozone-platform-hint=auto --ozone-platform=wayland --password-store=basic %U";
     startupNotify = true;
     terminal = false;
     icon = "brave-browser";

@@ -14,6 +14,8 @@
   nix.channel.enable = true;
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs.outPath}" ];
 
+  nixpkgs.config.allowUnfree = true;
+
   home-manager.users.scj       = import ./home-manager.nix { pkgs = pkgs; inputs = inputs; };
   home-manager.useUserPackages = true;
   home-manager.useGlobalPkgs   = true;
@@ -106,6 +108,21 @@
     jq
     pgadmin4-desktopmode
     eww
+    telegram-desktop
+    friture
+    qsynth
+    vmpk
+    ardour
+    (pkgs.stdenv.mkDerivation {
+      name = "fluida";
+      src = inputs.fluida;
+      installPhase = ''
+        runHook preInstall
+        mkdir -p $out/lib/lv2
+        cp -r ./* $out/lib/lv2/
+        runHook postInstall
+      '';
+    })
   ];
 
   # Fonts
@@ -113,7 +130,7 @@
     noto-fonts
     noto-fonts-cjk-sans
     noto-fonts-emoji
-    (nerdfonts.override { fonts = ["NerdFontsSymbolsOnly"]; })
+    nerd-fonts.symbols-only
     (pkgs.stdenv.mkDerivation {
       name = "iosevka";
       src = inputs.iosevka;
