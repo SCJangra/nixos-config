@@ -28,7 +28,7 @@
   boot.loader.efi.canTouchEfiVariables = true;
 
   # Enable networking
-  networking.hostName              = "nixos"; # Define your hostname.
+  networking.hostName              = "scj-main"; # Define your hostname.
   networking.networkmanager.enable = true;
 
   # Enable bluetooth
@@ -54,6 +54,44 @@
 
   # Auto detect partitions, usb drives and mtp devices
   services.gvfs.enable = true;
+
+  # Aria2 download manager
+  environment.etc."aria2/secret.txt" = {
+    text = "no-secret";
+    mode = "0400";
+  };
+  services.aria2 = {
+    enable = true;
+    rpcSecretFile = "/etc/aria2/secret.txt";
+    settings = {
+      enable-rpc = true;
+      rpc-allow-origin-all = true;
+    };
+  };
+
+  services.nginx = {
+    enable = true;
+
+    virtualHosts."scj-main" = {
+      locations."/downloads/" = {
+        alias = "${pkgs.ariang}/share/ariang/";
+        index = "index.html";
+        extraConfig = "autoindex on;";
+      };
+      locations."/downloads" = {
+        return = "301 /downloads/";
+      };
+      locations."/aria2/jsonrpc" = {
+        proxyPass = "http://127.0.0.1:6800/jsonrpc";
+        extraConfig = ''
+          proxy_http_version 1.1;
+          proxy_set_header Upgrade $http_upgrade;
+          proxy_set_header Connection "upgrade";
+          proxy_set_header Host $host;
+        '';
+      };
+    };
+  };
 
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
@@ -90,6 +128,7 @@
     kdePackages.qtstyleplugin-kvantum
     lxqt.pavucontrol-qt
     lxqt.pcmanfm-qt
+    lxqt.lxqt-archiver
     libsForQt5.qtstyleplugin-kvantum
     protonvpn-cli
     qbittorrent
@@ -104,11 +143,13 @@
     wget
     wl-clipboard
     unrar
+    unzip
     socat
     jq
     pgadmin4-desktopmode
     eww
     telegram-desktop
+    ariang
     friture
     qsynth
     vmpk
