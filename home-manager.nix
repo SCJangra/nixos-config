@@ -9,6 +9,10 @@
 
   programs.home-manager.enable = true;
 
+  # Rclone
+  # TODO: Add full config
+  programs.rclone.enable = true;
+
   # Neovim
   programs.neovim.enable           = true;
   programs.neovim.defaultEditor    = true;
