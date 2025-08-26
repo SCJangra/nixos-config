@@ -11,7 +11,7 @@
       inputs.home-manager.nixosModules.home-manager
     ];
 
-  nix.channel.enable = true;
+  nix.channel.enable = false;
   nix.nixPath = [ "nixpkgs=${inputs.nixpkgs.outPath}" ];
 
   nixpkgs.config.allowUnfree = true;
