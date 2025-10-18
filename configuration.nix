@@ -55,6 +55,9 @@
   # Auto detect partitions, usb drives and mtp devices
   services.gvfs.enable = true;
 
+  # Power management
+  services.upower.enable = true;
+
   # Aria2 download manager
   environment.etc."aria2/secret.txt" = {
     text = "no-secret";
@@ -72,7 +75,7 @@
   services.nginx = {
     enable = true;
 
-    virtualHosts."scj-main" = {
+    virtualHosts."main.home.lan" = {
       locations."/downloads/" = {
         alias = "${pkgs.ariang}/share/ariang/";
         index = "index.html";
@@ -103,6 +106,9 @@
     fish     = { enable = true; };
     hyprland = { enable = true; };
     command-not-found = { enable = false; };
+
+    light.enable = true;
+    light.brightnessKeys.enable = true;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -129,11 +135,11 @@
     lxqt.pavucontrol-qt
     lxqt.pcmanfm-qt
     lxqt.lxqt-archiver
-    libsForQt5.qtstyleplugin-kvantum
+    kdePackages.qtstyleplugin-kvantum
     protonvpn-cli
     qbittorrent
     ripgrep
-    rofi-wayland
+    walker
     signal-desktop
     slurp
     swww
