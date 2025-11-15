@@ -2,13 +2,14 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, inputs, ... }:
+{ pkgs, inputs, ... }:
 
 {
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.home-manager
+      inputs.agenix.nixosModules.default
     ];
 
   nix.channel.enable = false;
@@ -30,6 +31,7 @@
   # Enable networking
   networking.hostName              = "scj-main"; # Define your hostname.
   networking.networkmanager.enable = true;
+  networking.firewall.allowPing    = true;
 
   # Enable bluetooth
   hardware.bluetooth.enable = true;
@@ -127,6 +129,7 @@
   # $ nix search wget
   environment.shells = with pkgs; [ fish ];
   environment.systemPackages = with pkgs; [
+    jellyfin-mpv-shim
     brave
     curl
     fd
@@ -160,6 +163,7 @@
     qsynth
     vmpk
     ardour
+    inputs.agenix.packages."${system}".default
     (pkgs.stdenv.mkDerivation {
       name = "fluida";
       src = inputs.fluida;

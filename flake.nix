@@ -23,9 +23,14 @@
       url = "https://github.com/brummer10/Fluida.lv2/releases/download/v0.9.3/Fluida.lv2-v0.9.3-linux-x86_64.tar.xz";
       flake = false;
     };
+
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, iosevka, fluida, home-manager, nix-index-database }@inputs:
+  outputs = { self, nixpkgs, iosevka, fluida, home-manager, nix-index-database, agenix }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -37,7 +42,10 @@
 
       nixosConfigurations = {
         nixos = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs; };
+          specialArgs = {
+            inherit inputs;
+            system = system;
+          };
           modules = [ ./configuration.nix ];
         };
       };
