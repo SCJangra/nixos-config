@@ -129,6 +129,7 @@
   # $ nix search wget
   environment.shells = with pkgs; [ fish ];
   environment.systemPackages = with pkgs; [
+    picard
     jellyfin-mpv-shim
     brave
     curl
@@ -139,7 +140,7 @@
     lxqt.pcmanfm-qt
     lxqt.lxqt-archiver
     kdePackages.qtstyleplugin-kvantum
-    protonvpn-cli
+    protonvpn-gui
     qbittorrent
     ripgrep
     walker
@@ -180,7 +181,7 @@
   fonts.packages = with pkgs; [
     noto-fonts
     noto-fonts-cjk-sans
-    noto-fonts-emoji
+    noto-fonts-color-emoji
     nerd-fonts.symbols-only
     (pkgs.stdenv.mkDerivation {
       name = "iosevka";
