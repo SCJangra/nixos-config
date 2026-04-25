@@ -28,9 +28,19 @@
       url = "github:ryantm/agenix";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    dms = {
+      url = "github:AvengeMedia/DankMaterialShell";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
+
+    dsearch = {
+      url = "github:AvengeMedia/danksearch";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = { self, nixpkgs, iosevka, fluida, home-manager, nix-index-database, agenix }@inputs:
+  outputs = { self, nixpkgs, iosevka, fluida, home-manager, nix-index-database, agenix, dms, dsearch }@inputs:
     let
       system = "x86_64-linux";
       pkgs = import nixpkgs { inherit system; };
@@ -45,6 +55,7 @@
           specialArgs = {
             inherit inputs;
             system = system;
+            storageDir = "/run/media/scj/Storage";
           };
           modules = [ ./configuration.nix ];
         };

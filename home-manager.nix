@@ -1,4 +1,10 @@
 { pkgs, inputs, ... }: {
+
+  imports = [
+    inputs.dms.homeModules.dank-material-shell
+    inputs.dsearch.homeModules.default
+  ];
+
   home.username      = "scj";
   home.homeDirectory = "/home/scj";
   home.stateVersion  = "23.05";
@@ -9,6 +15,10 @@
 
   programs.home-manager.enable = true;
 
+  programs.dank-material-shell.enable         = true;
+  programs.dank-material-shell.systemd.enable = false;
+  programs.dsearch.enable                     = true;
+
   # Rclone
   # TODO: Add full config
   programs.rclone.enable = true;
@@ -17,6 +27,8 @@
   programs.neovim.enable           = true;
   programs.neovim.defaultEditor    = true;
   programs.neovim.withNodeJs       = true;
+  programs.neovim.withRuby         = true;
+  programs.neovim.withPython3      = true;
   programs.neovim.extraPackages    = with pkgs; [ gcc lua-language-server cargo rustc cmake ];
 
   # Fish
@@ -25,9 +37,10 @@
   programs.fish.functions.nv         = "set -x NVIM_APPNAME nv; nvim $argv";
 
   # Git
-  programs.git.enable    = true;
-  programs.git.userName  = "Sachin Charakhwal";
-  programs.git.userEmail = "sachincharakhwal@gmail.com";
+  programs.git.enable              = true;
+  programs.git.settings.user.email = "sachincharakhwal@gmail.com";
+  programs.git.settings.user.name  = "Sachin Charakhwal";
+  programs.git.signing.format      = null;
 
   # Starship
   programs.starship.enable                       = true;
@@ -73,6 +86,7 @@
   gtk.theme.name        = "Orchis-Teal-Dark-Compact";
   gtk.cursorTheme.name  = "BreezeX-Dark";
   gtk.cursorTheme.size  = 28;
+  gtk.gtk4.theme        = null;
 
   # QT
   qt.enable             = true;
@@ -125,10 +139,10 @@
     HYPRLAND_LOG_WLR = 1;
 
     # Example IME Support: fcitx
-    GTK_IM_MODULE  = "fcitx";
-    QT_IM_MODULE   = "fcitx";
-    XMODIFIERS     = "@im=fcitx";
-    SDL_IM_MODULE  = "fcitx";
-    GLFW_IM_MODULE = "ibus";
+    # GTK_IM_MODULE  = "fcitx";
+    # QT_IM_MODULE   = "fcitx";
+    # XMODIFIERS     = "@im=fcitx";
+    # SDL_IM_MODULE  = "fcitx";
+    # GLFW_IM_MODULE = "ibus";
   };
 }

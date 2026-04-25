@@ -10,6 +10,7 @@
       ./hardware-configuration.nix
       inputs.home-manager.nixosModules.home-manager
       inputs.agenix.nixosModules.default
+      ./modules/steam.nix
     ];
 
   nix.channel.enable = false;
@@ -35,7 +36,7 @@
 
   # Enable bluetooth
   hardware.bluetooth.enable = true;
-  services.blueman.enable = true;
+  # services.blueman.enable = true;
 
   # Enable polkit
   security.polkit.enable = true;
@@ -60,44 +61,6 @@
   # Power management
   services.upower.enable = true;
 
-  # Aria2 download manager
-  environment.etc."aria2/secret.txt" = {
-    text = "no-secret";
-    mode = "0400";
-  };
-  services.aria2 = {
-    enable = true;
-    rpcSecretFile = "/etc/aria2/secret.txt";
-    settings = {
-      enable-rpc = true;
-      rpc-allow-origin-all = true;
-    };
-  };
-
-  services.nginx = {
-    enable = true;
-
-    virtualHosts."main.home.lan" = {
-      locations."/downloads/" = {
-        alias = "${pkgs.ariang}/share/ariang/";
-        index = "index.html";
-        extraConfig = "autoindex on;";
-      };
-      locations."/downloads" = {
-        return = "301 /downloads/";
-      };
-      locations."/aria2/jsonrpc" = {
-        proxyPass = "http://127.0.0.1:6800/jsonrpc";
-        extraConfig = ''
-          proxy_http_version 1.1;
-          proxy_set_header Upgrade $http_upgrade;
-          proxy_set_header Connection "upgrade";
-          proxy_set_header Host $host;
-        '';
-      };
-    };
-  };
-
   # Set your time zone.
   time.timeZone = "Asia/Kolkata";
 
@@ -108,9 +71,6 @@
     fish     = { enable = true; };
     hyprland = { enable = true; };
     command-not-found = { enable = false; };
-
-    light.enable = true;
-    light.brightnessKeys.enable = true;
   };
 
   # Define a user account. Don't forget to set a password with ‘passwd’.
@@ -136,17 +96,13 @@
     fd
     kdePackages.okular
     kdePackages.qtstyleplugin-kvantum
-    lxqt.pavucontrol-qt
+    kdePackages.partitionmanager
     lxqt.pcmanfm-qt
     lxqt.lxqt-archiver
+    lxqt.lxqt-policykit
     kdePackages.qtstyleplugin-kvantum
-    protonvpn-gui
     qbittorrent
     ripgrep
-    walker
-    signal-desktop
-    slurp
-    swww
     toybox
     tree-sitter
     vlc
@@ -157,13 +113,12 @@
     socat
     jq
     pgadmin4-desktopmode
-    eww
     telegram-desktop
-    ariang
     friture
     qsynth
     vmpk
     ardour
+    opencode
     inputs.agenix.packages."${system}".default
     (pkgs.stdenv.mkDerivation {
       name = "fluida";
@@ -194,11 +149,6 @@
       '';
     })
   ];
-
-  # fstab
-  fileSystems."/run/media/scj/Storage".device  = "/dev/disk/by-label/Storage";
-  fileSystems."/run/media/scj/Storage".fsType  = "ntfs-3g";
-  fileSystems."/run/media/scj/Storage".options = [ "rw" "uid=1000" ];
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions
